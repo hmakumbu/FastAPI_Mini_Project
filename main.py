@@ -47,7 +47,7 @@ asynccontextmanager
 async def lifespan(app: FastAPI):
   
     logistic_model, random_forest_model = load_models()
-    ml_models["logestic regression"] = logistic_model
+    ml_models["logistic regression"] = logistic_model
     ml_models["random forest"] = random_forest_model
     try:
         yield
