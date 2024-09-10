@@ -72,7 +72,7 @@ async def predict(model_name: str, input_data: PredictionInput):
     if not model:
         raise HTTPException(status_code=404, detail="Model not found")
     await asyncio.sleep(5)
-    features = [[input_data.length_sepals, input_data.width_sepals, input_data.length_petals, input_data.width_petals ]]
+    features = [[input_data.length_sepals, input_data.width_sepals, input_data.length_petals, input_data.width_petals]]
     prediction = model.predict(features)
     predicted_class = class_names.get(prediction[0], "Unknown")
     return {"prediction": predicted_class}
