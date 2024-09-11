@@ -1,4 +1,4 @@
-name: FastAPI
+name: FastAPI_CI
 
 on:
   push:
@@ -11,11 +11,11 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8]
+        python-version: [3.12]
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v2
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
