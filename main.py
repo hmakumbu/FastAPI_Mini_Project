@@ -1,11 +1,11 @@
-from fastapi import FastAPI,HTTPException, Path
+from fastapi import FastAPI, HTTPException
 import os
 import joblib
-from contextlib import contextmanager
 from contextlib import asynccontextmanager
 from pydantic import BaseModel, Field
 from typing import Dict
 import asyncio
+from dotenv import load_dotenv
 
 
 from dotenv import load_dotenv
@@ -26,8 +26,8 @@ class_names = {
     2: "Iris-virginica"
 }
 
-logreg_model_path = os.getenv("LOGREG_MODEL_PATH")
-rf_model_path = os.getenv("RF_MODEL_PATH")
+logreg_model_path = os.getenv("LOGREG_MODELP")
+rf_model_path = os.getenv("RF_MODELP")
 
 
 ml_models = {}
@@ -56,6 +56,10 @@ async def lifespan(app: FastAPI):
         ml_models.clear()
 
 app = FastAPI(lifespan=lifespan)
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to my APP IRIS prediction!"}
 
 @app.get("/health")
 def health_check():
