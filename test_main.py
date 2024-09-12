@@ -1,9 +1,9 @@
 import pytest
 from fastapi.testclient import TestClient
-from main import app, ml_models  # Adjust the import based on your app's file name and structure
+from main import app, ml_models  
 from unittest.mock import patch, MagicMock
 
-# Initialize the TestClient
+
 client = TestClient(app)
 
 def test_read_root():
